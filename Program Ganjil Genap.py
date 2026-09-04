@@ -1,28 +1,79 @@
-angka = int(input("Masukkan sebuah angka: "))
+import math
 
-# Mengecek sisa bagi dengan 2
-if angka % 2 == 0:
-    print(f"Angka {angka} adalah bilangan genap.")
-else:
-    print(f"Angka {angka} adalah bilangan ganjil.")
+# === DEFINISI FUNGSI ===
+def hitung_luas_persegi_v1(s):
+    return s * s
 
-  # Inisialisasi variabel untuk mengontrol perulangan
-    lanjut = "y"
+def hitung_keliling_persegi_v1(s):
+    return 4 * s
+
+def status_bilangan_prima(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(math.isqrt(n)) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+def cek_ganjil_atau_genap(n):
+    if n % 2 == 0:
+        return "Genap"
+    else:
+        return "Ganjil"
+
+def hitung_luas_lingkaran_v1(r):
+    return 3.14 * r * r
+
+def hitung_luas_segitiga_v1(a, t):
+    return 0.5 * a * t
+
+
+# === RUNNING PROGRAM UTAMA ===
+while True:
+    print("\n------------------------------------------")
+    print("      PROGRAM MATEMATIKA & LOGIKA        ")
+    print("------------------------------------------")
+    print("1. Hitung Luas Persegi")
+    print("2. Hitung Keliling Persegi")
+    print("3. Cek Bilangan Prima")
+    print("4. Cek Bilangan Genap / Ganjil")
+    print("5. Hitung Luas Lingkaran")
+    print("6. Hitung Luas Segitiga")
+    print("7. Keluar")
+    print("------------------------------------------")
     
-    # Perulangan akan terus berjalan selama variabel lanjut bernilai 'y' atau 'Y'
-    while lanjut.lower() == "y":
-        # 1. Input bilangan dari pengguna
-        bilangan = int(input("\nMasukkan sebuah bilangan: "))
+    pilihan_menu = input("Pilih menu (1-7): ")
     
-        # 2. Logika Modulus (sisa pembagian dengan 2)
-        if bilangan % 2 == 0:
-            print(f"--> {bilangan} adalah bilangan GENAP")
+    if pilihan_menu == "1":
+        sisi = float(input("Masukkan panjang sisi: "))
+        print(f"Hasil Luas Persegi: {hitung_luas_persegi_v1(sisi)}")
+        
+    elif pilihan_menu == "2":
+        sisi = float(input("Masukkan panjang sisi: "))
+        print(f"Hasil Keliling Persegi: {hitung_keliling_persegi_v1(sisi)}")
+        
+    elif pilihan_menu == "3":
+        angka_in = int(input("Masukkan angka: "))
+        if status_bilangan_prima(angka_in):
+            print(f"Angka {angka_in} adalah Bilangan Prima.")
         else:
-            print(f"--> {bilangan} adalah bilangan GANJIL")
-    
-        # 3. Menanyakan apakah pengguna ingin mengulang atau keluar
-        lanjut = input(
-            "\nApakah ingin mengecek bilangan lain? (y/n untuk keluar): "
-        )
-    
-    print("\nProgram selesai. Terima kasih telah menggunakan program ini!")
+            print(f"Angka {angka_in} bukan Bilangan Prima.")
+            
+    elif pilihan_menu == "4":
+        angka_in = int(input("Masukkan angka: "))
+        print(f"Angka {angka_in} tergolong Bilangan {cek_ganjil_atau_genap(angka_in)}.")
+            
+    elif pilihan_menu == "5":
+        r = float(input("Masukkan jari-jari: "))
+        print(f"Hasil Luas Lingkaran: {hitung_luas_lingkaran_v1(r)}")
+
+    elif pilihan_menu == "6":
+        a = float(input("Masukkan alas: "))
+        t = float(input("Masukkan tinggi: "))
+        print(f"Hasil Luas Segitiga: {hitung_luas_segitiga_v1(a, t)}")
+        
+    elif pilihan_menu == "7":
+        print("Program selesai, terima kasih!")
+        break
+    else:
+        print("Pilihan salah, masukkan angka 1 sampai 7.")
